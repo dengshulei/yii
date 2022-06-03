@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\Supplier;
 use backend\models\SupplierSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -39,12 +40,22 @@ class SupplierController extends Controller
     public function actionIndex()
     {
         $searchModel = new SupplierSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
-
+        $searchModel->load(Yii::$app->request->getQueryParams());
+        $dataProvider = $searchModel->search();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    /**
+     * @return bool
+     */
+    public function actionExport()
+    {
+        $searchModel = new SupplierSearch();
+        $searchModel->load(Yii::$app->request->getQueryParams());
+        return $searchModel->export();
     }
 
     /**
