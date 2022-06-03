@@ -55,7 +55,7 @@ function export_click(){
     let  ids = $('#suppliersearch-ids').val() + '';
     let  all_type = parseInt($('#suppliersearch-all-type').val());
     if (ids === '' && all_type === 0) {
-        alert('Select at least one ID！')
+        alert('Which column(s) to be included in the CSV and column "id" is mandatory.')
         return false;
     }
     let url = '/supplier/export?rnd=' + (Math.random() * 99999999).toString();
