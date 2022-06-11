@@ -53,7 +53,7 @@ use yii\widgets\ActiveForm;
             ->textInput([
                     //'id' => 'suppliersearch-value',
                     'type' => 'number',
-                    'placeholder' => $model->getAttributeLabel('Supplier name'),
+                    'placeholder' => $model->getAttributeLabel('Supplier ID'),
                     'maxlength' => 30
             ]) ?>
     </div>
